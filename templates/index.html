@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}خانه | پورتفولیو{% endblock %}
+
+{% block content %}
+<section class="text-center">
+  <img src="{{ url_for('static', filename='img/profile.jpg') }}" alt="Profile" class="rounded-circle mb-3" width="150">
+  <h1 class="fw-bold mb-3">سلام، من لیلا ندرلو هستم 👋</h1>
+  <p class="lead">توسعه‌دهنده‌ی وب با تخصص در HTML, CSS, JS و Python (Flask)</p>
+  <a href="/projects" class="btn btn-info mt-3">مشاهده پروژه‌ها</a>
+  <a href="/static/files/Leila_Resume.pdf" class="btn btn-outline-light mt-3" download>دانلود رزومه</a>
+</section>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}تماس با من{% endblock %}
+
+{% block content %}
+<section class="contact">
+  <h2 class="text-center mb-4">تماس با من</h2>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, msg in messages %}
+        <div class="alert alert-{{ category }}">{{ msg }}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  <form method="POST" class="mx-auto" style="max-width:500px;">
+    <div class="mb-3">
+      <label for="name" class="form-label">نام:</label>
+      <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">ایمیل:</label>
+      <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="message" class="form-label">پیام:</label>
+      <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-info w-100">ارسال پیام</button>
+  </form>
+</section>
+{% endblock %}
