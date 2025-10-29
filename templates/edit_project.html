@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}ویرایش پروژه{% endblock %}
+
+{% block content %}
+<div class="container mt-5" style="max-width:600px;">
+  <h2 class="text-center mb-4">ویرایش پروژه</h2>
+
+  <form method="POST">
+    <div class="mb-3">
+      <label>عنوان پروژه</label>
+      <input type="text" name="title" value="{{ project.title }}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label>توضیح پروژه</label>
+      <textarea name="description" rows="3" class="form-control" required>{{ project.description }}</textarea>
+    </div>
+    <div class="mb-3">
+      <label>آدرس تصویر</label>
+      <input type="url" name="image_url" value="{{ project.image_url }}" class="form-control">
+    </div>
+    <div class="mb-3">
+      <label>لینک پروژه</label>
+      <input type="url" name="link" value="{{ project.link }}" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-success w-100 mt-3">ذخیره تغییرات</button>
+    <a href="{{ url_for('admin') }}" class="btn btn-secondary w-100 mt-2">بازگشت</a>
+  </form>
+</div>
+{% endblock %}
