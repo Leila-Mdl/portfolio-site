@@ -1,13 +1,36 @@
 {% extends 'base.html' %}
-{% block title %}پروژه‌ها{% endblock %}
+{% block title %}پروژه‌های من{% endblock %}
 
 {% block content %}
-<section class="projects">
-  <h2>پروژه‌های من</h2>
-  <div class="project-card">
-    <h3>سایت تمرینی Flask</h3>
-    <p>پروژه‌ای ساده برای یادگیری بک‌اند با Flask و طراحی ریسپانسیو.</p>
-    <a href="#" class="btn">مشاهده در GitHub</a>
+<div class="container mt-5">
+  <h2 class="text-center mb-5 fw-bold">پروژه‌های من 💼</h2>
+
+  {% if projects %}
+  <div class="row justify-content-center">
+    {% for p in projects %}
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-lg border-0 h-100 rounded-4 overflow-hidden">
+          {% if p.image_url %}
+            <img src="{{ p.image_url }}" class="card-img-top" alt="{{ p.title }}" style="height: 230px; object-fit: cover;">
+          {% else %}
+            <div class="bg-light text-center py-5 text-muted">بدون تصویر</div>
+          {% endif %}
+
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title fw-bold text-center">{{ p.title }}</h5>
+            <p class="card-text text-secondary mt-2" style="font-size: 0.95rem;">{{ p.description }}</p>
+            {% if p.link %}
+              <a href="{{ p.link }}" target="_blank" class="btn btn-info mt-auto w-100 rounded-pill">
+                مشاهده پروژه 🌐
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
   </div>
-</section>
+  {% else %}
+    <p class="text-center text-muted mt-5">هیچ پروژه‌ای ثبت نشده 🚧</p>
+  {% endif %}
+</div>
 {% endblock %}

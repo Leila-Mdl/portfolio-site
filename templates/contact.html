@@ -2,7 +2,7 @@
 {% block title %}تماس با من{% endblock %}
 
 {% block content %}
-<section class="contact">
+<div class="container mt-5" style="max-width:600px;">
   <h2 class="text-center mb-4">تماس با من</h2>
 
   {% with messages = get_flashed_messages(with_categories=true) %}
@@ -13,23 +13,20 @@
     {% endif %}
   {% endwith %}
 
-  <form method="POST" class="mx-auto" style="max-width:500px;">
+  <form method="POST">
     <div class="mb-3">
-      <label for="name" class="form-label">نام:</label>
-      <input type="text" class="form-control" id="name" name="name" required>
+      <label>نام</label>
+      <input type="text" name="name" class="form-control" required>
     </div>
-
     <div class="mb-3">
-      <label for="email" class="form-label">ایمیل:</label>
-      <input type="email" class="form-control" id="email" name="email" required>
+      <label>ایمیل</label>
+      <input type="email" name="email" class="form-control" required>
     </div>
-
     <div class="mb-3">
-      <label for="message" class="form-label">پیام:</label>
-      <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+      <label>پیام</label>
+      <textarea name="message" rows="4" class="form-control" required></textarea>
     </div>
-
-    <button type="submit" class="btn btn-info w-100">ارسال پیام</button>
+    <button type="submit" class="btn btn-info w-100">ارسال</button>
   </form>
-</section>
+</div>
 {% endblock %}

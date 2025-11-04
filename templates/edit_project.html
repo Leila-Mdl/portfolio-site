@@ -3,28 +3,39 @@
 
 {% block content %}
 <div class="container mt-5" style="max-width:600px;">
-  <h2 class="text-center mb-4">ویرایش پروژه</h2>
+  <h3 class="text-center mb-4">ویرایش پروژه 🛠️</h3>
 
-  <form method="POST">
+  <form method="POST" enctype="multipart/form-data">
     <div class="mb-3">
       <label>عنوان پروژه</label>
       <input type="text" name="title" value="{{ project.title }}" class="form-control" required>
     </div>
+
     <div class="mb-3">
-      <label>توضیح پروژه</label>
-      <textarea name="description" rows="3" class="form-control" required>{{ project.description }}</textarea>
+      <label>توضیحات</label>
+      <textarea name="description" rows="4" class="form-control" required>{{ project.description }}</textarea>
     </div>
-    <div class="mb-3">
-      <label>آدرس تصویر</label>
-      <input type="url" name="image_url" value="{{ project.image_url }}" class="form-control">
-    </div>
+
     <div class="mb-3">
       <label>لینک پروژه</label>
       <input type="url" name="link" value="{{ project.link }}" class="form-control">
     </div>
 
-    <button type="submit" class="btn btn-success w-100 mt-3">ذخیره تغییرات</button>
-    <a href="{{ url_for('admin') }}" class="btn btn-secondary w-100 mt-2">بازگشت</a>
+    <div class="mb-3">
+      <label>عکس فعلی</label><br>
+      {% if project.image_url %}
+        <img src="{{ project.image_url }}" alt="{{ project.title }}" style="width:100%; max-height:200px; object-fit:cover;" class="rounded mb-3">
+      {% else %}
+        <p class="text-muted">هیچ عکسی ثبت نشده</p>
+      {% endif %}
+    </div>
+
+    <div class="mb-3">
+      <label>تغییر عکس (اختیاری)</label>
+      <input type="file" name="image_file" class="form-control" accept=".png,.jpg,.jpeg,.gif">
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">ذخیره تغییرات</button>
   </form>
 </div>
 {% endblock %}

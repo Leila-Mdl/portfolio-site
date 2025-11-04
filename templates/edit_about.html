@@ -1,10 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %}ویرایش درباره من{% endblock %}
+
+{% block content %}
+<div class="container mt-5" style="max-width: 600px;">
+    <h2 class="mb-4 text-center">ویرایش درباره من</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label class="form-label">نام:</label>
+            <input type="text" class="form-control" name="name" value="{{ about.name if about else '' }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">عنوان:</label>
+            <input type="text" class="form-control" name="title" value="{{ about.title if about else '' }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">توضیحات:</label>
+            <textarea class="form-control" name="description" rows="4">{{ about.description if about else '' }}</textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">لینک لینکدین:</label>
+            <input type="url" class="form-control" name="linkedin" value="{{ about.linkedin if about else '' }}">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">لینک گیت‌هاب:</label>
+            <input type="url" class="form-control" name="github" value="{{ about.github if about else '' }}">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">عکس پروفایل:</label>
+            {% if about and about.profile_image %}
+                <img src="{{ about.profile_image }}" alt="Profile" class="img-thumbnail mb-2" width="150">
+            {% endif %}
+            <input type="file" class="form-control" name="profile_image" accept="image/*">
+        </div>
+
+        <button type="submit" class="btn btn-success w-100 mb-3">💾 ذخیره تغییرات</button>
+    </form>
+
+    <!-- 🔹 دکمه بازگشت به پنل مدیریت -->
+    <div class="text-center">
+        <a href="{{ url_for('admin') }}" class="btn btn-secondary">⬅️ بازگشت به پنل مدیریت</a>
+    </div>
+</div>
+{% endblock %}
